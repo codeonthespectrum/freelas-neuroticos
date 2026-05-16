@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Freelas Neuróticos — Vitrine Neuraverso</title>
+<meta name="description" content="Vitrine de freelancers do fandom Neuraverso. Encontre criadores cósmicos por área e estado.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-void: #06030F;
+  --bg-deep: #0E0820;
+  --bg-card: rgba(20, 12, 40, 0.55);
+  --bg-card-hover: rgba(30, 18, 60, 0.75);
+  --purple-neon: #B026FF;
+  --purple-glow: #A855F7;
+  --purple-soft: #C77DFF;
+  --purple-deep: #6B21A8;
+  --yellow-bolt: #FFE600;
+  --yellow-soft: #FACC15;
+  --text-primary: #F4EEFF;
+  --text-muted: #8B7FA8;
+  --text-dim: #5A4F75;
+  --border-glow: rgba(176, 38, 255, 0.25);
+  --border-glow-strong: rgba(176, 38, 255, 0.6);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Manrope', sans-serif;
+  background: var(--bg-void);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  line-height: 1.5;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(176, 38, 255, 0.18), transparent 60%),
+    radial-gradient(ellipse 60% 40% at 90% 100%, rgba(255, 230, 0, 0.06), transparent 60%),
+    radial-gradient(ellipse 60% 40% at 0% 80%, rgba(176, 38, 255, 0.08), transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#stars {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.grid-overlay {
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(176, 38, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(176, 38, 255, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 1;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+}
+
+.glow-orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  animation: float 20s ease-in-out infinite;
+}
+
+.glow-orb-1 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(176, 38, 255, 0.4), transparent 70%);
+  top: -100px;
+  right: -150px;
+}
+
+.glow-orb-2 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255, 230, 0, 0.15), transparent 70%);
+  bottom: 20%;
+  left: -100px;
+  animation-delay: -10s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -40px) scale(1.05); }
+  66% { transform: translate(-20px, 30px) scale(0.95); }
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 28px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ─────────── HEADER ─────────── */
+
+header {
+  padding: 60px 0 40px;
+  position: relative;
+}
+
+.brand-line {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--purple-soft);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  opacity: 0;
+  animation: fadeUp 0.6s ease-out 0.1s forwards;
+}
+
+.brand-line::before {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: var(--purple-soft);
+}
+
+.brand-line .blink {
+  display: inline-block;
+  width: 8px;
+  height: 14px;
+  background: var(--yellow-bolt);
+  animation: blink 1.2s steps(2) infinite;
+  vertical-align: middle;
+  margin-left: 4px;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.title {
+  font-family: 'Chakra Petch', sans-serif;
+  font-weight: 700;
+  font-size: clamp(48px, 9vw, 120px);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease-out 0.2s forwards;
+  position: relative;
+}
+
+.title .word-1 {
+  color: var(--text-primary);
+  text-shadow: 0 0 40px rgba(176, 38, 255, 0.4);
+}
+
+.title .word-2 {
+  background: linear-gradient(135deg, var(--purple-neon) 20%, var(--yellow-bolt) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease-out 0.35s forwards;
+}
+
+.subtitle strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.stats {
+  display: flex;
+  gap: 48px;
+  flex-wrap: wrap;
+  padding-top: 28px;
+  border-top: 1px solid rgba(176, 38, 255, 0.15);
+  opacity: 0;
+  animation: fadeUp 0.8s ease-out 0.5s forwards;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-num {
+  font-family: 'Chakra Petch', sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  color: var(--yellow-bolt);
+  line-height: 1;
+}
+
+.stat-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─────────── CONTROLS ─────────── */
+
+.controls {
+  position: sticky;
+  top: 0;
+  padding: 28px 0 24px;
+  background: linear-gradient(to bottom, var(--bg-void) 60%, transparent);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 10;
+  margin-bottom: 16px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease-out 0.65s forwards;
+}
+
+.controls-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.search-wrap {
+  flex: 1;
+  min-width: 280px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-glow);
+  border-radius: 4px;
+  padding: 0 16px;
+  transition: all 0.2s;
+  backdrop-filter: blur(10px);
+}
+
+.search-wrap:focus-within {
+  border-color: var(--purple-neon);
+  box-shadow: 0 0 0 4px rgba(176, 38, 255, 0.12), 0 0 30px rgba(176, 38, 255, 0.2);
+}
+
+.search-prefix {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--yellow-bolt);
+  font-weight: 700;
+  margin-right: 10px;
+}
+
+#search {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  padding: 16px 0;
+}
+
+#search::placeholder {
+  color: var(--text-dim);
+}
+
+.filter-group {
+  position: relative;
+}
+
+.filter-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background: var(--bg-card);
+  border: 1px solid var(--border-glow);
+  border-radius: 4px;
+  color: var(--text-primary);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 16px 40px 16px 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 180px;
+  backdrop-filter: blur(10px);
+}
+
+.filter-select:hover {
+  border-color: var(--purple-neon);
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: var(--purple-neon);
+  box-shadow: 0 0 0 4px rgba(176, 38, 255, 0.12);
+}
+
+.filter-group::after {
+  content: '▾';
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--purple-soft);
+  pointer-events: none;
+  font-size: 12px;
+}
+
+.clear-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-dim);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 16px 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-radius: 4px;
+}
+
+.clear-btn:hover {
+  color: var(--yellow-bolt);
+  border-color: var(--border-glow);
+}
+
+.results-line {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.results-line .count {
+  color: var(--yellow-bolt);
+  font-weight: 700;
+}
+
+/* ─────────── GRID ─────────── */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+  padding: 20px 0 80px;
+}
+
+.card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border-glow);
+  border-radius: 6px;
+  padding: 22px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.2, 0, 0.2, 1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  min-height: 320px;
+  overflow: hidden;
+  opacity: 0;
+  animation: cardIn 0.5s ease-out forwards;
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card::before, .card::after,
+.card .corner-tr, .card .corner-bl, .card .corner-br {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: var(--purple-soft);
+  border-style: solid;
+  transition: all 0.3s;
+  opacity: 0.6;
+}
+
+.card::before { /* top-left */
+  top: 8px; left: 8px;
+  border-width: 1px 0 0 1px;
+}
+.card .corner-tr {
+  top: 8px; right: 8px;
+  border-width: 1px 1px 0 0;
+}
+.card .corner-bl {
+  bottom: 8px; left: 8px;
+  border-width: 0 0 1px 1px;
+}
+.card .corner-br {
+  bottom: 8px; right: 8px;
+  border-width: 0 1px 1px 0;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--purple-neon);
+  background: var(--bg-card-hover);
+  box-shadow:
+    0 0 0 1px var(--border-glow-strong),
+    0 20px 60px -10px rgba(176, 38, 255, 0.3),
+    0 0 80px -20px rgba(176, 38, 255, 0.4);
+}
+
+.card:hover::before, .card:hover .corner-tr,
+.card:hover .corner-bl, .card:hover .corner-br {
+  border-color: var(--yellow-bolt);
+  opacity: 1;
+  width: 16px;
+  height: 16px;
+}
+
+.card-id {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: 0.15em;
+  margin-bottom: 14px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-id .uf-tag {
+  color: var(--yellow-bolt);
+  border: 1px solid var(--border-glow);
+  padding: 2px 8px;
+  border-radius: 2px;
+  background: rgba(255, 230, 0, 0.05);
+}
+
+.card-name {
+  font-family: 'Chakra Petch', sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.15;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.card-area {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--purple-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 10px;
+}
+
+.card-specialty {
+  font-size: 14px;
+  color: var(--text-primary);
+  font-weight: 500;
+  margin-bottom: 14px;
+  line-height: 1.4;
+}
+
+.card-bio {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.55;
+  flex: 1;
+  margin-bottom: 18px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.btn-contact {
+  background: linear-gradient(135deg, var(--yellow-bolt), var(--yellow-soft));
+  color: #0a0612;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 4px;
+  font-family: 'Chakra Petch', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-contact::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: left 0.6s;
+}
+
+.btn-contact:hover::before {
+  left: 100%;
+}
+
+.btn-contact:hover {
+  box-shadow: 0 0 30px rgba(255, 230, 0, 0.5);
+  transform: translateY(-1px);
+}
+
+.btn-contact .icon {
+  font-size: 14px;
+}
+
+.btn-contact .arrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  transition: transform 0.2s;
+}
+
+.btn-contact:hover .arrow {
+  transform: translateX(3px);
+}
+
+.btn-portfolio {
+  background: transparent;
+  border: 1px solid var(--border-glow);
+  color: var(--purple-soft);
+  padding: 10px 14px;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+
+.btn-portfolio:hover {
+  border-color: var(--purple-neon);
+  color: var(--text-primary);
+  background: rgba(176, 38, 255, 0.08);
+}
+
+/* ─────────── EMPTY STATE ─────────── */
+
+.empty {
+  text-align: center;
+  padding: 80px 20px;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text-muted);
+}
+
+.empty .glyph {
+  font-size: 48px;
+  color: var(--purple-soft);
+  margin-bottom: 20px;
+  opacity: 0.5;
+}
+
+.empty .msg {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 10px;
+}
+
+.empty .hint {
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+.hidden { display: none !important; }
+
+/* ─────────── MODAL ─────────── */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 3, 15, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.modal-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal {
+  background: linear-gradient(135deg, rgba(30, 18, 60, 0.95), rgba(14, 8, 32, 0.95));
+  border: 1px solid var(--border-glow-strong);
+  border-radius: 8px;
+  padding: 36px;
+  max-width: 640px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 30px 100px rgba(176, 38, 255, 0.3), 0 0 0 1px rgba(255, 230, 0, 0.1);
+  transform: scale(0.95) translateY(20px);
+  transition: transform 0.3s cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+.modal-backdrop.active .modal {
+  transform: scale(1) translateY(0);
+}
+
+.modal::before, .modal::after,
+.modal .m-corner-bl, .modal .m-corner-br {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: var(--yellow-bolt);
+  border-style: solid;
+  pointer-events: none;
+}
+.modal::before { top: 10px; left: 10px; border-width: 1px 0 0 1px; }
+.modal::after { top: 10px; right: 10px; border-width: 1px 1px 0 0; }
+.modal .m-corner-bl { bottom: 10px; left: 10px; border-width: 0 0 1px 1px; }
+.modal .m-corner-br { bottom: 10px; right: 10px; border-width: 0 1px 1px 0; }
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: 1px solid var(--border-glow);
+  color: var(--text-muted);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.modal-close:hover {
+  border-color: var(--yellow-bolt);
+  color: var(--yellow-bolt);
+  transform: rotate(90deg);
+}
+
+.modal-id {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 0.15em;
+  margin-bottom: 16px;
+}
+
+.modal-name {
+  font-family: 'Chakra Petch', sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1;
+  margin-bottom: 14px;
+  color: var(--text-primary);
+}
+
+.modal-meta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.modal-chip {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 6px 12px;
+  border-radius: 3px;
+  border: 1px solid var(--border-glow);
+}
+
+.modal-chip.area {
+  color: var(--purple-soft);
+  background: rgba(176, 38, 255, 0.08);
+}
+
+.modal-chip.uf {
+  color: var(--yellow-bolt);
+  background: rgba(255, 230, 0, 0.06);
+  border-color: rgba(255, 230, 0, 0.3);
+}
+
+.modal-section {
+  margin-bottom: 24px;
+}
+
+.modal-section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.modal-section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, var(--border-glow), transparent);
+}
+
+.modal-specialty {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.modal-bio {
+  font-size: 15px;
+  color: var(--text-primary);
+  line-height: 1.65;
+  white-space: pre-line;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+
+.modal-actions .btn-contact,
+.modal-actions .btn-portfolio {
+  flex: 1;
+  min-width: 200px;
+}
+
+.modal-actions .btn-contact {
+  padding: 16px 20px;
+  font-size: 14px;
+}
+
+.modal-actions .btn-portfolio {
+  padding: 14px 20px;
+  font-size: 12px;
+}
+
+/* ─────────── FOOTER ─────────── */
+
+footer {
+  padding: 40px 0 60px;
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border-top: 1px solid rgba(176, 38, 255, 0.1);
+  margin-top: 40px;
+}
+
+footer .star {
+  color: var(--yellow-bolt);
+  margin: 0 8px;
+}
+
+/* ─────────── SCROLLBAR ─────────── */
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-deep); }
+::-webkit-scrollbar-thumb {
+  background: var(--purple-deep);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--purple-neon); }
+
+/* ─────────── MOBILE ─────────── */
+
+@media (max-width: 640px) {
+  .container { padding: 0 20px; }
+  header { padding: 40px 0 30px; }
+  .stats { gap: 24px; }
+  .stat-num { font-size: 28px; }
+  .controls-row { flex-direction: column; align-items: stretch; }
+  .filter-group, .filter-select { width: 100%; }
+  .filter-select { min-width: 100%; }
+  .grid { grid-template-columns: 1fr; gap: 14px; }
+  .modal { padding: 24px; }
+  .modal-name { font-size: 28px; }
+  .modal-actions { flex-direction: column; }
+  .modal-actions .btn-contact, .modal-actions .btn-portfolio { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="stars"></canvas>
+<div class="grid-overlay"></div>
+<div class="glow-orb glow-orb-1"></div>
+<div class="glow-orb glow-orb-2"></div>
+
+<div class="container">
+
+  <header>
+    <div class="brand-line"> fale com quem sabe fazer <span class="blink"></span></div>
+    <h1 class="title">
+      <span class="word-1">FREELAS</span><br>
+      <span class="word-2">NEURÓTICOS</span>
+    </h1>
+    <p class="subtitle">
+      Vitrine de profissionais do <strong>Neuraverso</strong>. Encontre profissionais incríveis por área, estado e especialidade — e fale direto com quem topa o corre.
+    </p>
+    <div class="stats">
+      <div class="stat">
+        <span class="stat-num" id="stat-total">--</span>
+        <span class="stat-label">profissionais</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" id="stat-areas">--</span>
+        <span class="stat-label">áreas</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" id="stat-states">--</span>
+        <span class="stat-label">estados</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="controls">
+    <div class="controls-row">
+      <div class="search-wrap">
+        <span class="search-prefix">&gt;</span>
+        <input type="text" id="search" placeholder="buscar por nome, especialidade, bio..." autocomplete="off">
+      </div>
+      <div class="filter-group">
+        <select class="filter-select" id="filter-area">
+          <option value="">[ todas as áreas ]</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <select class="filter-select" id="filter-state">
+          <option value="">[ todos os estados ]</option>
+        </select>
+      </div>
+      <button class="clear-btn" id="clear-filters">× limpar</button>
+    </div>
+    <div class="results-line">
+      <span>exibindo <span class="count" id="result-count">--</span> de <span id="result-total">--</span> profissionais</span>
+      <span id="filter-display"></span>
+    </div>
+  </section>
+
+  <main>
+    <div class="grid" id="grid"></div>
+    <div class="empty hidden" id="empty">
+      <div class="glyph">◌</div>
+      <div class="msg">Nenhum sinal nessa coordenada</div>
+      <div class="hint">tenta ajustar os filtros ou a busca</div>
+    </div>
+  </main>
+
+  <footer>
+    NEURAVERSO <span class="star">★</span> code by codeonthespectrum <span class="star">★</span> FEITO PARA OS NEURÓTICOS
+  </footer>
+
+</div>
+
+<div class="modal-backdrop" id="modal-backdrop">
+  <div class="modal" id="modal">
+    <span class="m-corner-bl"></span>
+    <span class="m-corner-br"></span>
+    <button class="modal-close" id="modal-close" aria-label="Fechar">×</button>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════
+// DATA — normalizada da planilha
+// ═══════════════════════════════════════════════════════════════
+
+const AREA_MAP = {
+  'audiovisual': 'Audiovisual & Animação',
+  'artes_manuais': 'Artes Manuais & Físico',
+  'ilustracao': 'Ilustração & Quadrinhos',
+  'saude': 'Saúde & Bem-estar',
+  'design': 'Design & Identidade Visual',
+  'tecnologia': 'Tecnologia & Programação',
+  'escrita': 'Escrita & Conteúdo',
+  'projetos': 'Projetos & Consultoria',
+  'educacao': 'Educação & Ensino',
+  'musica': 'Música & Performance',
+  'marketing': 'Marketing & Social Media',
+  'outros': 'Outros'
+};
+
+const PROFESSIONALS = [
+  {n:"Derivam Araújo",a:"audiovisual",e:"Edição no geral",uf:"BA",c:"https://www.instagram.com/derivan.editor/",p:"https://derivaneditor.carrd.co",b:"Sou um editor de vídeo que gosta de trabalhar com responsabilidade, atualmente no mercado existe muitos profissionais que não levam o trabalho a sério e eu quero ser o contraposto disso."},
+  {n:"Flávia Mioshi",a:"artes_manuais",e:"Papercraft | Quadro de quebra-cabeça | Trabalhos manuais criativos",uf:"BA",c:"https://www.instagram.com/procrastinarte_mioshi",p:"https://www.instagram.com/procrastinarte_mioshi",b:"Sou criativa e amo decorações fora da caixa! Meus destaques são Papercraft e quebra-cabeças emoldurados e personalizados para cada cliente. O perfil está em construção, mas entre em contato para conhecer meu portfólio e transformar suas ideias em arte!"},
+  {n:"Miguelita Personalizados",a:"artes_manuais",e:"Papelaria Personalizada",uf:"RJ",c:"https://www.instagram.com/miguelita.personalizados/",p:"https://www.instagram.com/miguelita.personalizados/",b:"Eu faço papelaria personalizada de festa, agendas, cadernos, planners, desenvolvo artes simples e estou aberta a desenvolver outros produtos personalizados dentro das minhas possibilidades. Em breve loja na shopee"},
+  {n:"Nice Resinas",a:"artes_manuais",e:"Personalizados em resina",uf:"RJ",c:"https://www.instagram.com/nice.resinas/",p:"https://shopee.com.br/nice.resinas",b:"Faço peças personalizadas em resina. As peças ficam luxuosas, mas custam mais barato que uma joia. São ótimas opções para lembrancinhas e eternizações (peças onde itens são eternizados)."},
+  {n:"Zabella",a:"ilustracao",e:"Ilustração para personagens e capas para e-books",uf:"SP",c:"zabellaarts@gmail.com",p:"https://fantastic-park-098.notion.site/Isabella-Cipolla-Design-gr-fico-ilustra-o-e64d7e02052a45038ad799f0a4a72d03",b:"Olá! Sou a Zabella (sim, todos os meus clientes me chamam assim), fiz um curso técnico de design gráfico de 2023 a 2024, mas atualmente atuo mais como ilustradora e já produzi duas capas para e-books & muitas ilustrações para personagens de livros e de rpg!"},
+  {n:"Priscila Souzza TarO",a:"saude",e:"Taróloga/Oraculista",uf:"MG",c:"31 99582-3342",p:"https://www.instagram.com/priscilasouzzataro/",b:"Sou Taróloga ha 5 anos, trabalhando também com outros oraculos e baralho cigano. Agora estou tentando ganhar meu lugar ao sol nas redes. Não adivinho o futuro, mas eu vejo que de melhor tem disponível no momento, pra você aproveitar. O que os olhos não enxergam, a energia conta!"},
+  {n:"Thais",a:"outros",e:"Arquiteta e artista (desenho quadros)",uf:"SP",c:"tmiranda.arq@gmail.com",p:"@tha__ms",b:"Sou arquiteta com 8 anos de formada. Faço projeto de interiores. Segui a carreira porque gosto de fazer arte. Me chamem seja para projeto seja para desenhar um quadro"},
+  {n:"Ígnea Estúdio Criativo",a:"design",e:"Identidades Visuais para negócios e pessoas disruptivas",uf:"MG",c:"igneastudiocriativo@gmail.com",p:"https://behance.net/igneaestudio",b:"Somos um casal apaixonado por criatividade e autenticidade. Fazemos identidades visuais completas, especialmente para pessoas e negócios disruptivos. Se você tem um negócio alternativo OU é uma personalidade alternativa em um meio corporativo padrão, vamos amar ajudar a construir sua marca com você."},
+  {n:"Márcia Novaes",a:"saude",e:"Logoterapia e análise existencial",uf:"PB",c:"83974009136",p:"https://www.instagram.com/psimarcianov/",b:"Há três anos trabalho como psicóloga clínica e atuo com a abordagem da logoterapia, que trabalha o sentido da vida. Se acredita que seu emprego está uma porcaria, ou que seu relacionamento perdeu aquele 'tchan', ou que não sabe o que pretende fazer na sua vida. Essa é a pessoa que vai te ajudar."},
+  {n:"Fabiana Calazans",a:"artes_manuais",e:"Pintura em tecido: fraldas, panos de copa, toalhas, mantas... Tudo personalizado",uf:"SP",c:"fabicallazans@gmail.com",p:"@fabyanacalazans",b:"Feito com amor! Cada pincelada é dada como se fosse algo para mim mesma, com cuidado, carinho, pensando na alegria de quem receber meu trabalho. Algo especial, feito só pra você!"},
+  {n:"Nell Junior",a:"audiovisual",e:"Edição e criação de vídeos, em especial com uso de IAs",uf:"SP",c:"neliodominguesjr@gmail.com",p:"https://nelltek.com.br/",b:"Eu crio e edito vídeos, principalmente com IA que transformam ideias em impacto visual real. Domino prompts, direção de estilo, storytelling e refinamento para entregar conteúdo rápido, consistente e de alto nível. Os Neur deveriam me contratar porque eu não sigo tendências, a menos se me pedirem."},
+  {n:"Clinicas GXJ",a:"saude",e:"Avaliação Neuropsicológica, Psicologia, Fonoaudiologia e Nutrição",uf:"SP",c:"11 970688567",p:"https://www.clinicasgxj.com.br",b:"Somos uma clínica criada por mãe e filha, nascida do amor pela ciência e pelo cuidado real. Atuamos com psicologia, nutrição, fono e avaliação neuropsicológica, com foco em adultos neurodivergentes. Atendemos online e presencial em SP, particular ou convênio."},
+  {n:"Eric Augusto / Chico Atlântico",a:"audiovisual",e:"Edição de vídeo e Thumbnail de YouTube",uf:"SP",c:"chico.atlantic04@gmail.com",p:"https://youtube.com/@chico-atlantico",b:"Eu comecei a editar em 2019, fazendo edições gravações de viagem da minha família, algo bem caseiro. Em 2020, graças a um trabalho de escola, comecei fazer meus próprios vídeos no meu canal do YouTube, Chico Atlântico. Em 2024 consegui meu primeiro 'bico', editei para o canal Hikari."},
+  {n:"Andréia / Toys e Tals",a:"artes_manuais",e:"Amigurumi",uf:"SP",c:"toysetals@gmail.com",p:"https://www.instagram.com/toysetals",b:"Se vc quer um bonequinho de um personagem/personalidade q tá difícil de encontrar bora falar comigo pra fazer com a pose, as roupas e todos os detalhes q vc quiser! Amigurumis com delicadeza e muitos detalhes!!"},
+  {n:"Linni Amigurumi",a:"artes_manuais",e:"Amigurumis e Bordado com foto",uf:"SP",c:"@linni_amigurumi",p:"https://www.instagram.com/linni_amigurumi",b:"Minha trajetória começou como um hobby. Eu fazia por gosto mesmo. Um dia, alguém viu meu trabalho e perguntou se eu vendia Amigurumi. Eu queria uma oportunidade pra ganhar o dinheiro do pão com café da tarde… e disse sim 😅 A partir daí, o que era hobby virou Linni Amigurumi."},
+  {n:"Izadora Freitas",a:"tecnologia",e:"Sites: portfólios, páginas de vendas, catálogos virtuais",uf:"PE",c:"izadorafreitaseng@gmail.com",p:"https://portfolio-website-mu-liard-59.vercel.app",b:"Sou uma desenvolvedora web com experiência em criar páginas que imprimam bem marcas, personalidades e produtos, no estilo que o cliente deseja. Já fiz portfólios, páginas de vendas, catálogos virtuais, etc. Dê uma olhadinha no meu portfólio e vê se você se agrada, vou ficar feliz em conversar!"},
+  {n:"Sthe / Kamyzartz",a:"outros",e:"Comissões por artes digitais",uf:"RJ",c:"kamyzacc@gmail.com",p:"https://kamyzartz.carrd.co",b:"Ano passado abri minhas comissions, onde posso fazer icons (fotos de perfil), desenhos de corpo inteiro, pets, casais. Bem, seu pedido é uma ordem! Se eu puder atender, farei o meu melhor para sempre entregar uma boa arte que fique pra sempre na memória do meu cliente!"},
+  {n:"MrMenezesDev",a:"tecnologia",e:"Desenvolvimento de Software",uf:"BA",c:"erick@mrmenezes.dev",p:"https://www.linkedin.com/in/mrmenezes",b:"Desenvolvedor Desenrolado. Criação de Bots simples a sistemas bancários. Pau pra toda obra de software."},
+  {n:"Boo",a:"outros",e:"Ilustração, quadrinista, Vtuber, Pinturas tradicionais",uf:"MG",c:"https://www.instagram.com/booficent",p:"https://booficent.artstation.com/",b:"Hey! Sou artista visual a 8 anos formando pela UFMG, faço artes personalizadas, detalhadas, estilo anime ou realista. Meu trabalho expande a pinturas na parede, para camisas, ou lembranças de entes queridos. Bye!"},
+  {n:"Cecilia Pacheco / Menina da Harpa",a:"musica",e:"Harpista (aulas e música ao vivo para eventos)",uf:"MG",c:"meninadaharpa@gmail.com",p:"https://meninadaharpa.com",b:"Bacharel em Música pela UFMG e Mestre pala Musikhochschule Lübeck, na Alemanha. Sou harpista Principal da Orquestra Sinfônica de Minas Gerais desde 2014, educadora musical há mais de 15 anos e membro fundadora da Associação Latino-americana de Harpa."},
+  {n:"Mysma Raeema",a:"escrita",e:"Escritora (Autora), traduções e revisões",uf:"BA",c:"mysmaraeema@gmail.com",p:"",b:"Oie! Trabalho como autora autônoma e já publiquei dois livros com uma editora e um pelo formato Kindle, sendo estes: Amor em Chamas, Play-off no Gelo e A Queda do Arcanjo. Sou falante de Português e Inglês fluente. Atuei como professora durante 3 anos em rede pública e 2 em aulas particulares."},
+  {n:"Monique Crabi",a:"ilustracao",e:"Ilustração digital",uf:"MG",c:"mcc12art@gmail.com",p:"https://www.behance.net/gallery/240600613/Portfolio",b:"Sou ilustradora digital e transformo ideias e sentimentos em imagem. Meu trabalho busca sensibilidade, expressão e conexão através da ilustração."},
+  {n:"Mix Dudu",a:"outros",e:"Designs de backgrounds, logos e iconografia, pseudo-programador e fotógrafo",uf:"GO",c:"laaapony@gmail.com",p:"",b:"Minha especialidade são coisas mais grandes com muitos pequenos detalhes que melhoram o todo, uso muito de inspiração os princípios de design de Persona, junto com os menus do Just Dance. Ainda não fiz um portfolio pois estou fazendo um site pra mostrar eles, mas mostro na DM caso interessado ^_^"},
+  {n:"Psicóloga Alice Anne",a:"saude",e:"Psicoterapia Comportamental",uf:"MG",c:"psicologaaliceanne@gmail.com",p:"https://aliceanne.com.br",b:"Olá Neuróticos, meu nome é Alice e eu sou Psicóloga Clínica. Realizo atendimentos psicoterapêuticos online. Tenho experiência no atendimento de adultos, em especial profissionais da saúde. Minha missão como psicóloga é ajudar o mundo uma pessoa de cada vez!"},
+  {n:"Letícia Borges",a:"saude",e:"Psicoterapia",uf:"DF",c:"leticiasborgespsi@gmail.com",p:"https://www.instagram.com/leticia.borges.psi",b:"Escolhi a psicologia porque confio no poder do vínculo e do cuidado emocional. Atendo desde idosos até pessoas da comunidade LGBTQIAP+. Acredito que a terapia é, antes de tudo, um encontro humano. Quero ajudar os Neuróticos a serem um pouco menos neuróticos, ou pelo menos mais gentis consigo mesmos!"},
+  {n:"Krys",a:"design",e:"Edição de imagem e de vídeo",uf:"PA",c:"vitoriakarolinagouveia@gmail.com",p:"https://www.instagram.com/krs_dsgn/",b:"Sou formada em tecnólogo em design gráfico há 1 ano, mas antes do curso eu já fazia artes e edições de imagem e vídeo para minhas redes sociais pessoais. Fazendo o curso surgiram clientes atrás dos meus serviços. Estagiei numa ótica que fazia as artes e vídeos para rede social e tráfego pago."},
+  {n:"Victoria Sant'Anna",a:"saude",e:"Terapeuta (psicologia UFRGS, mestrado USP)",uf:"SP",c:"santannavictoria019@gmail.com",p:"https://instagram.com/psico.victoriasantanna",b:"Sou terapeuta formada em psicologia pela UFRGS, com mestrado pela USP, atendo adolescentes e adultos, focada no público LGBTQIAPN+. Atendo por valores sociais também. Sigo um viés humanista nas minhas sessões, tenho muitos estudos sobre minorias sociais, incluindo isso na minha escuta terapêutica."},
+  {n:"Julyane Avila",a:"saude",e:"Psicóloga",uf:"SP",c:"psicologajulyaneavila@gmail.com",p:"",b:"Sou psicóloga formada em TCC e terapia focada em esquemas, atendo adolescentes e adultos. Trabalho com acolhimento empático para ajudar você a navegar desafios emocionais, reconstruir padrões internos e fortalecer sua jornada. Estou me especializando em parentalidade e psicologia perinatal."},
+  {n:"Nathalia Romances",a:"escrita",e:"Ghost writer, tradutora, autora e criadora de tramas",uf:"SE",c:"arquivo2022meu@gmail.com",p:"https://www.instagram.com/nathaliaromances1/",b:"Sou escritora, ghost writer, tradutora literária e criadora de tramas e premissas. Desenvolvo histórias envolventes, personagens complexos e enredos emocionais. Transformo ideias em narrativas sólidas, com ritmo, conflito e conexão real com o leitor."},
+  {n:"Hozaline Dumont",a:"educacao",e:"Professora de Inglês online",uf:"PR",c:"Lyne.dumont93@gmail.com",p:"https://hozaline.my.canva.site/-english-with-lyne",b:"Sou professora de inglês online há mais de 6 anos e já ajudei mais de 100 alunos a perder o medo do inglês. Gosto de ensinar de forma leve e prática, usando filmes, séries e situações reais do dia a dia."},
+  {n:"Giorgia Theresa",a:"projetos",e:"Advogada especialista em contratos de prestação de serviço",uf:"SC",c:"Advgiorgiatheresa@gmail.com",p:"https://www.instagram.com/advgiorgiatheresa",b:"Eu sou advogada especialista em contratos de prestação de serviços! Ou seja se vc é fotógrafo, designer, editor, você presta um serviço e precisa estar protegido por um bom contrato!!! Estou aqui para ajudar! Com um bom contrato você evita muita dor de cabeça e pode trabalhar tranquilo!"},
+  {n:"Vicki",a:"musica",e:"Musicista — guitarra/violão/baixo (rock n roll e heavy metal)",uf:"SP",c:"https://instagram.com/vicki.it.up",p:"https://instagram.com/vicki.it.up",b:"Sou uma musicista com mais de 10 anos de experiência em gravações, peças de teatro, shows ao vivo, turnês e acompanhamentos de artistas solo. As mulheres no rock 'n roll e metal extremo ainda são minoria e se precisar de alguém que entenda do assunto, sirva bases, solos e looks, disque Vicki!"},
+  {n:"Masuki_Midup",a:"ilustracao",e:"Desenhista, ilustradora e animadora",uf:"CE",c:"https://www.instagram.com/masuki_midup.art",p:"https://www.instagram.com/masuki_midup.art",b:"Olá! Sou desenhista e ilustrador. Faço comissões de: Character design, ilustração de Pets, OCs e Fanarts. Gosto de desenhar e animar, busco melhorar nessas áreas. Atualmente faço parte de um projeto que busca fazer um longa-metragem/série em animação."},
+  {n:"Cauã Santos / cacosant",a:"ilustracao",e:"Quadrinista, ilustrador, roteirista",uf:"BA",c:"cacosant0619@gmail.com",p:"https://www.instagram.com/cacosant06",b:"Eu sou um autor autodidata, que faz suas obras com lápis de cor tudo a mão. Você pode usar meus serviços pra ilustrar um momento especial da sua vida, ou dar voz aos seus pensamentos intrusivos. Não tenho preconceitos (o básico) e entrego tanto digital quanto em folha de papel físico."},
+  {n:"Amanda Ventura",a:"tecnologia",e:"Análise de Dados",uf:"MG",c:"amandavent.cerne@outlook.com",p:"",b:"Sou formada em Engenharia Mecânica e trabalho como Analista de Dados há 3 anos, para empresa da minha região."},
+  {n:"Kyrfla",a:"escrita",e:"Pesquisa e construção de textos diversos",uf:"MG",c:"kyrfla@outlook.com",p:"",b:"Sempre gostei de escrever, já ganhei concurso de poema da minha cidade quando criança e agora, como adulta, publiquei um livro. As vezes escrevo roteiros de vídeos para pessoas próximas."},
+  {n:"Roberta Felizzola",a:"saude",e:"Terapia Holística & Tarô Terapêutico",uf:"BA",c:"https://www.instagram.com/natural_mente_lardeluz",p:"https://www.instagram.com/natural_mente_lardeluz",b:"Sessão oracular terapêutica e personalizada com Tarot ou Baralho Cigano, focada em bloqueios e caminhos de crescimento. Inclui Reiki à distância, aromaterapia e floral indicados, prática terapêutica exclusiva, bônus de leitura espiritual e chamada final para integração e orientações."},
+  {n:"Beatriz Felizzola",a:"saude",e:"Psicóloga e neuropsicanalista em formação",uf:"SP",c:"psicobih23@gmail.com",p:"https://beatrizfelizzolapsicologia.my.canva.site/",b:"Psicóloga e neuropsicanalista em formação. Minha trajetória inclui atuação voluntária no Projeto Nakashima, acompanhando mulheres em situação de vulnerabilidade e violência doméstica, o que fortaleceu ainda mais meu compromisso com a escuta ética, sensível e transformadora. Sessões online."},
+  {n:"Naná / Natália Ferreira",a:"ilustracao",e:"Ilustração/Desenho de peças digitais 2D semi-realistas",uf:"SP",c:"nataliaferreira.studio@gmail.com",p:"https://nataliaferreirastu.wixstudio.com/portfolio",b:"Oi! Me chamo Naná, sou uma ilustradora apaixonada por Artes, Cinema, Música, Literatura e Jogos. Crio ilustrações de forma independente há alguns anos e estou a disposição para trabalhar em diversos formatos, mercados e projetos: setor editorial, redes sociais, publicidade, comissions pessoais etc."},
+  {n:"Hely de Brito / Ilustralyly",a:"ilustracao",e:"Ilustração infantil, didáticos, capas, editorial e quadrinhos",uf:"PI",c:"helydebrito@gmail.com",p:"https://www.behance.net/helydebrito",b:"Sou ilustradora há quase 10 anos, com ampla experiência no mercado editorial e infantil. Recentemente recebi o prêmio HQ mix pela adaptação de Quarto de Despejo."},
+  {n:"Mayara Reis Calsavara",a:"saude",e:"Consultoria de estilo | Personal Stylist",uf:"PR",c:"mayaracalsavara.estilo@gmail.com",p:"https://www.instagram.com/mayaracalsavara.estilo/",b:"Sou Psicóloga de formação e atuei em RH de empresas de tecnologia por quase 7 anos, em 2024 fiz uma mudança de carreira pra atuar como personal stylist. Eu ajudo a mulheres a se reconhecer de novo nas roupas, sem colocar em uma caixinha de estilo, sem ficar dando regrinhas de moda."},
+  {n:"JD Rino",a:"ilustracao",e:"Ilustração digital",uf:"BA",c:"Jady.nm09@gmail.com",p:"https://www.instagram.com/rino._._",b:"Sou ilustradora freelancer. Já trabalhei no desenvolvimento de personagens para RPG, trabalhei em conjunto com uma psicóloga e uma nutricionista para desenvolvimento de tirinhas educativas, além de encomendas de icon, chibi, retrato, busto e corpo todo para presente."},
+  {n:"Flavia Mioshi (Eventos)",a:"projetos",e:"Produção de eventos de RPG em Salvador",uf:"BA",c:"https://www.instagram.com/matilharpg/",p:"https://www.instagram.com/matilharpg/",b:"Trabalhamos com eventos de RPG, boardgame e cardgame em Salvador com objetivo de q mais pessoas conheçam esse universo. Basta seguir a página pra saber do próximo evento (maioria são gratuitos)."},
+  {n:"Daniela",a:"outros",e:"Arquitetura de interiores",uf:"SC",c:"daniela9814@hotmail.com",p:"https://www.instagram.com/danikoballarquitetura/",b:"Trabalho com o que adoro e me empenho em te conhecer para projetar sua casa ou escritório com a sua cara! O objetivo final é criar um espaço aconchegante para você, penso então no lugar como um todo: desde marcenaria até os revestimentos de parede e iluminação."},
+  {n:"BlackSheep Design",a:"artes_manuais",e:"Produtos personalizados, encadernação artesanal, impressos corporativos",uf:"PR",c:"https://wa.me/41988032959",p:"https://www.instagram.com/blacksheepdesign.studio",b:"Aqui você encontra impressos corporativos, produtos personalizados e encadernações artesanais. Fazemos cartões de visita com presença, agendas que sustentam a rotina, canecas e squeezes personalizados que fortalecem marcas, e muito mais! Tudo feito com carinho, cuidado e muita autenticidade."},
+  {n:"Mayara Regina",a:"ilustracao",e:"Desenho digital estilo mangá e cartoon",uf:"RJ",c:"mayararegina555@gmail.com",p:"https://www.instagram.com/mayareg.art",b:"Sou desenhista há mais de 15 anos, aprendi tudo sozinha observando os traços dos animes e desenhos que assisto. Faço pintura em tela de tecido, pano de prato, miniaturas em biscuit e ilustração digital. Meu traço é puxado pro anime e cartoon, também faço paisagens. Não faço realismo."},
+  {n:"Kaue Neo",a:"artes_manuais",e:"Pintura em aquarela, marcadores e desenho a lápis",uf:"AM",c:"https://www.instagram.com/kaueneo",p:"https://www.canva.com/design/DAG_zkRutC8",b:"Dou vida à imaginação através das artes, sou muito esforçado para entregar o melhor resultado e fazer meu cliente feliz, além de enviar para todo país e de te manter informado durante todo o processo."},
+  {n:"LannahJu",a:"ilustracao",e:"Ilustração, design digital, identidade digital e edição de vídeos",uf:"BA",c:"lannahjuvivadart@gmail.com",p:"https://lannahjuvivadart.carrd.co",b:"Sou ilustradora digital com experiência em freelance commission desde 2018. Trabalho com ilustração e edições de vídeo longos e curtos, sempre focando em comunicar ideias de forma clara e visualmente forte. Tenho compromisso com qualidade, prazos e adaptação ao estilo de cada projeto!"},
+  {n:"Erri Monster",a:"ilustracao",e:"Ilustração digital nos estilos anime e mangá, designer de personagens",uf:"PB",c:"https://www.instagram.com/errimonster",p:"https://errimonster.carrd.co",b:"Sou ilustrador digital há bastante tempo, trabalho como freelance fazendo comissões de arte personalizadas. Meu estilo é bastante flexível e consigo desenhar um pouco de tudo em qualquer estilo que me pedirem."},
+  {n:"Henriqueta Santos",a:"saude",e:"Terapia Integrativa — Regressão a Vidas Passadas",uf:"SP",c:"https://www.instagram.com/henriquetasantos_",p:"https://www.instagram.com/henriquetasantos_",b:"Meu interesse pelo bem-estar — meu e das pessoas — como algo essencial para se viver bem, evoluiu para o interesse em terapias alternativas. Terapeuta há mais de 15 anos atendo online."},
+  {n:"Natália Jordão",a:"saude",e:"Psicóloga — Psicoterapia online",uf:"BA",c:"https://wa.me/5573991037472",p:"https://www.nataliajordao.com",b:"Sou psicóloga há 12 anos e acompanho mulheres na psicoterapia online. Trabalho com Gestalt-Terapia, abordagens corporais e contextuais, oferecendo uma escuta atenta e práticas que ajudam a reconhecer necessidades, fortalecer vínculos e construir uma vida mais saudável."},
+  {n:"Lorena Ferraz | Voz & Violão",a:"musica",e:"Música intimista para eventos diversos (casamentos, gastronomia, particulares)",uf:"BA",c:"lorenaferrazvozeviolao@gmail.com",p:"https://www.instagram.com/lorenaferraz.vozeviolao",b:"Desde 2001 levo pra seu evento em formato acústico, um repertório eclético usando bases instrumentais que simulam uma pequena banda pra animar ainda mais sua festa. Pra te trazer mais conforto, eu já possuo sonorização de alta qualidade e transporte. Vc é de Salvador ou RMS? Me leva pra sua festa!"},
+  {n:"Susan Grizafis / Alma Arquitetura",a:"outros",e:"Arquitetura, obras, interiores e urbanização (e professora de Artes)",uf:"SP",c:"https://instagram.com/susangrizafis",p:"https://instagram.com/escritorioalma",b:"Sou arquiteta experiente, atuo no setor público (prefeitura) e domino todas as etapas da arquitetura, do conceito à execução. Tenho visão técnica e estratégica, com organização e senso estético. Também sou professora de artes, ampliando meu repertório criativo e colaboração em equipe."},
+  {n:"Késia Simplício",a:"ilustracao",e:"Desenhista tradicional/digital",uf:"AL",c:"https://www.instagram.com/kesia_simplicio",p:"",b:"Olá Neurinhos(as)! 💛 Me chamo Késia e sou Desenhista. Trabalho com ilustrações digitais e tradicionais há muitos anos. Exerço essa profissão com muito orgulho e amor, e será um prazer poder dar vida a suas ideias e sonhos através da minha arte. Conheça mais o meu trabalho pelo meu Instagram!"},
+  {n:"Letícia",a:"educacao",e:"Professora de Inglês",uf:"RS",c:"lefemefiles@gmail.com",p:"",b:"Olá! Sou professora de inglês há 30 anos, e dou aulas online. Trabalho com níveis do básico ao avançado e conversação para quem quer manter o conhecimento e fluência na língua. Sou especializada em alunos acima de 15 anos de idade. Manda um e-mail e confere as condições."},
+  {n:"Carol / Vermora",a:"saude",e:"Tarot com magia natural",uf:"RJ",c:"vermorahekatina@gmail.com",p:"https://docs.google.com/document/d/1kaPQsa5klPUawhFNDJ6ceB1huyNar0wvCPJqs6XYfgg",b:"O tarot te ajuda a se tornar a melhor versão de si mesmo (para si, não para o outro) e também oferece resposta para questões mais objetivas. Seguro a tocha pra você caminhar! Por ser estudante, meus preços são bem camaradas (a partir de R$5,00) e vou manter descontaços para meus amigos neuróticos!"},
+  {n:"Eucilene Lima Alves Balestrero",a:"projetos",e:"Arquiteta e Urbanista com pós em Design de Interiores",uf:"ES",c:"euciarq@gmail.com",p:"",b:"Meu Nome é Eucilene, sou Arquiteta ❤️ Trabalho com projetos de arquitetura e interiores, sendo consultorias (Material mais acessível) ou projetos completos. Tudo para entregar pra você uma obra categorizada com todas as informações prévias, para realizar o seu sonho com Eficiência e Grandiosidade 🌹"},
+  {n:"Mi Darts",a:"ilustracao",e:"Ilustração para livros e produtos",uf:"SP",c:"mi.cheledarts@gmail.com",p:"https://www.instagram.com/mi.darts/",b:"Oii, me chamo Michele, trabalho com ilustrações para livros, produtos etc. Sou uma garota apaixonada por fantasia e muitos dos meus trabalhos são voltados para esse nicho, então se tem interesse em projetos com um toque de magia é só chamar."},
+  {n:"Isabela Silva",a:"saude",e:"Nutricionista (humanizada e comportamental, foco em TEA)",uf:"PE",c:"81 988088937",p:"",b:"Sou voltada para a área humanizada e comportamental! CRN ativo, sou aplicador ABA e graduanda em materno infantil e em nutrição no TEA. Tem dificuldade com texturas e quer melhorar isso? Nenhum nutricionista te entende e só bota dois quadradinhos de chocolate? Pois vem simbora que eu te ajudo."},
+  {n:"Giulia Miranda",a:"audiovisual",e:"Edição de vídeo (em aprendizado)",uf:"SP",c:"Giuliarpbm7715@gmail.com",p:"",b:"Tenho 25 anos, me formei em 2025 em Cinema. Nunca trabalhei mesmo com edição de vídeo, fiz mais pra minha irmã. Sou CLT mas queria demais poder viver de arte, só que sempre fui tímida e prefiro os bastidores. Agora to querendo cursar sobre efeitos visuais, já q todo trabalho de edição exige."},
+  {n:"Dayane",a:"escrita",e:"Roteirista / escritora-fantasma",uf:"SP",c:"day13me@hotmail.com",p:"https://linktr.ee/NoahEmery",b:"Sou a Day, roteirista e escritora! Sou roteirista formada pela escola de roteiro Narratologia (professora Bea Góes). Tenho experiência em diversos gêneros de escrita e sou muito criativa!"},
+  {n:"Bah Rodrigues",a:"audiovisual",e:"Locução",uf:"SP",c:"ba.rodrigues.silva@gmail.com",p:"",b:"Olá! Meu nome é Barbara, sou formada em comunicação com ênfase em Rádio e TV e sou apaixonada por voz! Não a toa me formei também em arte dramática para poder trabalhar como dubladora hehe. Já fiz muitos trabalhos de locução, incluindo a narração de audiolivros. Se precisar de uma voz, conte comigo!"},
+  {n:"Arleide Muniz / Lady",a:"educacao",e:"Ensino de inglês + tradução + voice-over",uf:"BA",c:"arleide.mc@gmail.com",p:"https://www.linkedin.com/in/arleidemuniz/",b:"Hi, I'm Lady! Ensino inglês há mais de 15 anos, tanto presencialmente como online, e se você gosta tanto de jogos quanto eu, vai adorar minhas aulas cheias de ludicidade e interação! Além disso, já traduzi diversos livros, artigos, jogos etc. e tenho experiência como voice-over. Vamos conversar?"},
+  {n:"Azzy Minyard",a:"artes_manuais",e:"Crochê e comissões de desenhos",uf:"PR",c:"https://www.instagram.com/azzyminyard",p:"",b:"Meu nome é Azzy, sou um jovem que tá tentando a minha independência financeira por meio das minhas paixões ✨"},
+  {n:"Mayara",a:"saude",e:"Psicóloga (psicanálise)",uf:"SP",c:"psicologia.goncalves@gmail.com",p:"@psi_pensarconsciente",b:"Olá, neuróticos! Como vcs estão? Sou psicóloga, trabalho com a psicanálise e zelo pela promoção da saúde mental, principalmente nesse mundo ansioso, corrido e agitado. Acredito em trocas honestas, sensíveis, acolhedoras e com profundidade. Cada sujeito é único, e a escuta também pode ser! 😊"},
+  {n:"Izabela Camilo",a:"design",e:"Desenvolvimento de produto de moda",uf:"SP",c:"izabelacamilo@hotmail.com",p:"https://www.behance.net/izabelacamilo",b:"Sou profissional de Moda, Arte e Educação, formada em Moda e Artes Visuais. Atuo como estilista, docente e produtora cultural, desenvolvendo projetos que unem criação, ensino e práticas artísticas, com foco em moda autoral, inclusiva e processos criativos sensíveis e humanos."},
+  {n:"Saph",a:"design",e:"Ilustração digital, capas e ilustração para livros",uf:"MG",c:"mewardse@gmail.com",p:"https://saphirearts.carrd.co",b:"Trabalho com ilustração digital e tenho experiência com ilustração para livros, mas também trabalho com artes digitais avulsas, como presentes ou ilustração de personagens originais e/ou fanarts."},
+  {n:"Teacher Mari Rabbit",a:"educacao",e:"Aulas de inglês com foco em comunicação",uf:"SP",c:"teachermarirabbit@gmail.com",p:"",b:"Vivo de aulas de inglês há 13 anos e vi que o modelo de escola muitas vezes engessado não funciona para o inglês da vida real. Desde a pandemia venho ajudando alunos de maneira online a se comunicarem e perderem o medo de falar e viver o idioma de forma leve e divertida, sempre com muita paciência."},
+  {n:"Artas",a:"artes_manuais",e:"Personalização manual de Tênis, Jaquetas e calças",uf:"SP",c:"https://www.instagram.com/artas_atelie",p:"https://www.instagram.com/artas_atelie",b:"Olá, minha loja se chama Artas e pintamos 100% à mão Tênis, faço com nome, retrato, da sua banda favorita, anime, qualquer coisa eu crio o design e pinto. @Artas no Instagram está rolando uma rifa de um tênis personalizado (fiz a rifa para ajudar a custear o tratamento do meu gatinho)."},
+  {n:"Isabela Rodrigues Campos",a:"artes_manuais",e:"Ilustração e velas aromáticas",uf:"SP",c:"isabela.rodrigues3334@gmail.com",p:"https://www.behance.net/Zabbz",b:"Olá, sou a Isabela! Fiz técnico de comunicação visual e faço artes :D"},
+  {n:"André Luis",a:"artes_manuais",e:"Topos de bolo",uf:"RJ",c:"lilodre@hotmail.com",p:"https://www.elo7.com.br/DrezitoFestas5368",b:"Sou designer há mais de 10 anos, e tenho experiência em criação de topos e alguns artigos de festas."},
+  {n:"Thaís Gonçalves",a:"saude",e:"Psicóloga (TCC, ACT, DBT)",uf:"MG",c:"https://linktr.ee/psithagon",p:"https://psithagon.com.br/",b:"Sou Psicóloga formada pela UFSJ. Atuo na abordagem da TCC e Contextuais (ACT e DBT). Meu foco na clínica é alinhar ciência com subjetividade, oferecendo um espaço seguro, acolhedor, sem julgamentos, adaptado a cada pessoa, com ferramentas e técnicas práticas e dinâmicas."},
+  {n:"Teacher Dany",a:"educacao",e:"Aulas de inglês",uf:"SP",c:"teacherdanygalvao@gmail.com",p:"",b:"Teacher desde 2008, com alunos e alunas de diferentes idades e níveis, e com a competência de ser muitas vezes indicada a amigos e familiares. Sou muito feliz e grata por isso! 🤩🫶🏻🌎📝💻"},
+  {n:"Luane Silvestre",a:"marketing",e:"Conteúdo escrito e audiovisual, revisão e tradução",uf:"SP",c:"http://luanesilvestre.com",p:"https://www.linkedin.com/in/luanesilvestre/",b:"Sempre gostei muito de ler, escrever e explorar a internet — tive meu primeiro blog aos 10 anos de idade, cheio de gifs piscantes e layouts com HTML adaptado na tentativa e erro. Trabalho com conteúdo digital desde 2013."},
+  {n:"Poli arte em Crochet",a:"artes_manuais",e:"Sousplat de crochê",uf:"RJ",c:"https://www.instagram.com/poliartemcrochet",p:"https://www.instagram.com/poliartemcrochet",b:"Me chamo Poliana e estou começando a minha loja lá no Instagram. Vendo lindos sousplat de crochê para deixar sua mesa posta ainda mais bonita."},
+  {n:"Gabriella Medeiros",a:"saude",e:"Terapia Cognitiva-Comportamental",uf:"MG",c:"gabriellamedeiros91@gmail.com",p:"",b:"Sou psicóloga clínica, atendo pela abordagem cognitiva comportamental, majoritariamente mulheres, adolescentes e adultas, e tenho como foco de estudo ansiedade e habilidades sociais."},
+  {n:"Sâmella Demengeon | Psico LGBT",a:"saude",e:"Psicóloga (clínica voltada à comunidade LGBTQIA+)",uf:"SP",c:"samella.psicoesaude@gmail.com",p:"https://corpora.bio/psicolgbt",b:"Sou psicóloga (CRP 06/227507) com clínica voltada ao cuidado de pessoas LGBTQIA+. Atendo adolescentes e adultos, oferecendo um espaço seguro para falar de identidade, relações, autoestima e saúde mental. Aqui, você não precisa se explicar — pode apenas existir."},
+  {n:"Tendinha da Mara",a:"artes_manuais",e:"Pinturas em tela",uf:"SP",c:"https://www.instagram.com/tendinhadamara/",p:"https://www.instagram.com/tendinhadamara/",b:"Basicamente, pinturas em telas, geralmente de recordações ou álbuns de cantores! Diversos tamanhos, e envio para quase todo país! (via Melhor Envio/Correios)"},
+  {n:"Marinha Desenha",a:"artes_manuais",e:"Desenhos Digitais",uf:"SP",c:"https://www.instagram.com/elntmr/",p:"https://www.instagram.com/elntmr/",b:"Desenhos digitais em diversos estilos! Bratz, Simpsons, Cartoons, Anime e o que desejar. Artes para uso pessoal!!"},
+  {n:"Lidia Gloria",a:"audiovisual",e:"Edição de vídeo, props e maquiagens (formada em cinema e design)",uf:"PR",c:"lidiamagloria@gmail.com",p:"https://www.behance.net/ldiaglria",b:"Sou uma cineasta criativa, com o coração dividido entre a sala de corte e o set de filmagem. O que significa que eu posso criar os efeitos especiais e os práticos. Gosto de colocar a mão na massa e entender todas as partes do processo."},
+  {n:"Jay",a:"ilustracao",e:"Ilustração digital/tradicional, design de blusas, character sheet",uf:"RJ",c:"https://wa.me/5521970747810",p:"https://wa.me/5521970747810",b:"Olá, como estão? Me chamo Jay e venho compartilhar meu trabalho com vocês. Desenho desde criança, primariamente como um hobby, mas com o tempo vi uma oportunidade de ter uma grana extra pra ajudar com as contas daqui de casa. Espero que gostem do meu conteúdo, será uma honra atender os neuróticos ❤️"},
+  {n:"Emme Ateliê",a:"outros",e:"Modelista. Vestidos sob encomenda. Vintage e festa",uf:"RJ",c:"@atelieemmemary",p:"@atelieemmemary",b:"Olá gente! Sou uma apaixonada por estilo pessoal que acredita que se vestir bem não tem nada a ver com tendências e fast fashion. Bora construir um estilo autêntico e que se encaixe com sua personalidade e rotina. Bora juntos construir um guarda roupa autoral!"},
+  {n:"ÉLN TMR",a:"ilustracao",e:"Arte digital",uf:"SP",c:"https://www.instagram.com/elntmr/",p:"https://www.instagram.com/elntmr/",b:"Oie! Faço ilustrações digitais em diversos estilos (Simpsons, Bratz, Cartoon, Anime...). Minhas artes são mais voltadas para o uso pessoal ou de pequenos negócios. Já fiz avatar para Nail Designer, Disney Pets, Avatares para TCC e trabalhos escolares mas os mais pedidos são familiares..."}
+];
+
+// ═══════════════════════════════════════════════════════════════
+// CONTACT PARSER — detecta o tipo de contato e gera o link certo
+// ═══════════════════════════════════════════════════════════════
+
+function parseContact(raw, name) {
+  if (!raw) return { type: 'none', label: 'Sem contato', icon: '◌', url: null };
+
+  const text = String(raw).trim();
+  const greeting = `Olá ${name}! Te encontrei pela Vitrine Neuraverso ✨`;
+  const encoded = encodeURIComponent(greeting);
+
+  // 1. WhatsApp explícito (wa.me)
+  const wa = text.match(/wa\.me\/(\+?\d+)/i);
+  if (wa) {
+    const num = wa[1].replace(/\D/g, '');
+    return {
+      type: 'whatsapp',
+      icon: '◈',
+      channel: 'WhatsApp',
+      url: `https://wa.me/${num}?text=${encoded}`,
+      label: `Falar com ${name}`
+    };
+  }
+
+  // 2. Email
+  const email = text.match(/[\w.+-]+@[\w-]+\.[\w.-]+/);
+  if (email) {
+    return {
+      type: 'email',
+      icon: '✉',
+      channel: 'Email',
+      url: `mailto:${email[0]}?subject=${encodeURIComponent('Encontrei você na Vitrine Neuraverso')}&body=${encoded}`,
+      label: `Falar com ${name}`
+    };
+  }
+
+  // 3. Instagram URL
+  const instaUrl = text.match(/instagram\.com\/([\w._-]+)/i);
+  if (instaUrl) {
+    return {
+      type: 'instagram',
+      icon: '◉',
+      channel: 'Instagram',
+      url: `https://instagram.com/${instaUrl[1]}`,
+      label: `Falar com ${name}`
+    };
+  }
+
+  // 4. Telefone brasileiro (com ou sem formatação)
+  const phoneMatch = text.match(/(?:^|\D)(\d{2})\D?\s?(9?\d{4})\D?(\d{4})(?:\D|$)/);
+  if (phoneMatch) {
+    const num = '55' + phoneMatch[1] + phoneMatch[2] + phoneMatch[3];
+    return {
+      type: 'whatsapp',
+      icon: '◈',
+      channel: 'WhatsApp',
+      url: `https://wa.me/${num}?text=${encoded}`,
+      label: `Falar com ${name}`
+    };
+  }
+
+  // 5. URL genérica
+  const url = text.match(/https?:\/\/[^\s,;]+/);
+  if (url) {
+    let domain = '';
+    try { domain = new URL(url[0]).hostname.replace('www.', ''); } catch(e){}
+    return {
+      type: 'link',
+      icon: '→',
+      channel: domain || 'Link',
+      url: url[0],
+      label: `Falar com ${name}`
+    };
+  }
+
+  // 6. Handle de Instagram (@user)
+  const handle = text.match(/@([\w._-]+)/);
+  if (handle) {
+    return {
+      type: 'instagram',
+      icon: '◉',
+      channel: 'Instagram',
+      url: `https://instagram.com/${handle[1]}`,
+      label: `Falar com ${name}`
+    };
+  }
+
+  // Fallback
+  return {
+    type: 'unknown',
+    icon: '?',
+    channel: 'Contato',
+    url: null,
+    raw: text,
+    label: `Ver contato`
+  };
+}
+
+function parsePortfolio(raw) {
+  if (!raw) return null;
+  const text = String(raw).trim();
+
+  // URL completa
+  const url = text.match(/https?:\/\/[^\s,;]+/);
+  if (url) {
+    let domain = '';
+    try { domain = new URL(url[0]).hostname.replace('www.', ''); } catch(e){}
+    return { url: url[0], label: domain || 'portfolio' };
+  }
+
+  // Handle de Instagram
+  const handle = text.match(/@([\w._-]+)/);
+  if (handle) {
+    return { url: `https://instagram.com/${handle[1]}`, label: `@${handle[1]}` };
+  }
+
+  // Domínio sem protocolo
+  const domain = text.match(/([\w-]+\.)+[a-z]{2,}(\/[^\s]*)?/i);
+  if (domain) {
+    return { url: `https://${domain[0]}`, label: domain[0] };
+  }
+
+  return null;
+}
+
+// ═══════════════════════════════════════════════════════════════
+// STATE & RENDERING
+// ═══════════════════════════════════════════════════════════════
+
+let state = {
+  search: '',
+  area: '',
+  uf: ''
+};
+
+const $ = (s) => document.querySelector(s);
+const $$ = (s) => document.querySelectorAll(s);
+
+function normalizeStr(s) {
+  return (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+
+function applyFilters() {
+  const q = normalizeStr(state.search);
+  return PROFESSIONALS.filter(p => {
+    if (state.area && p.a !== state.area) return false;
+    if (state.uf && p.uf !== state.uf) return false;
+    if (q) {
+      const haystack = normalizeStr([p.n, p.e, p.b, AREA_MAP[p.a]].join(' '));
+      if (!haystack.includes(q)) return false;
+    }
+    return true;
+  });
+}
+
+function padId(i) { return 'NEU.' + String(i + 1).padStart(4, '0'); }
+
+function createCard(p, index) {
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.style.animationDelay = `${Math.min(index, 12) * 30}ms`;
+
+  const contact = parseContact(p.c, p.n);
+  const portfolio = parsePortfolio(p.p);
+  const originalIdx = PROFESSIONALS.indexOf(p);
+
+  card.innerHTML = `
+    <span class="corner-tr"></span>
+    <span class="corner-bl"></span>
+    <span class="corner-br"></span>
+    <div class="card-id">
+      <span>${padId(originalIdx)}</span>
+      <span class="uf-tag">${p.uf}</span>
+    </div>
+    <div class="card-name">${escapeHtml(p.n)}</div>
+    <div class="card-area">${AREA_MAP[p.a] || p.a}</div>
+    <div class="card-specialty">${escapeHtml(p.e)}</div>
+    <div class="card-bio">${escapeHtml(p.b)}</div>
+    <div class="card-actions">
+      ${contact.url
+        ? `<a class="btn-contact" href="${contact.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">
+             <span><span class="icon">${contact.icon}</span> ${escapeHtml(contact.label)}</span>
+             <span class="arrow">→</span>
+           </a>`
+        : `<button class="btn-contact" onclick="event.stopPropagation(); alert('Contato: ${escapeHtml(contact.raw || 'não encontrado')}')">
+             <span><span class="icon">${contact.icon}</span> ${escapeHtml(contact.label)}</span>
+             <span class="arrow">→</span>
+           </button>`
+      }
+      ${portfolio
+        ? `<a class="btn-portfolio" href="${portfolio.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">
+             ↗ ver portfólio
+           </a>`
+        : ''
+      }
+    </div>
+  `;
+
+  card.addEventListener('click', () => openModal(p));
+  return card;
+}
+
+function escapeHtml(s) {
+  return String(s == null ? '' : s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function render() {
+  const filtered = applyFilters();
+  const grid = $('#grid');
+  const empty = $('#empty');
+
+  grid.innerHTML = '';
+
+  if (filtered.length === 0) {
+    empty.classList.remove('hidden');
+  } else {
+    empty.classList.add('hidden');
+    filtered.forEach((p, i) => grid.appendChild(createCard(p, i)));
+  }
+
+  $('#result-count').textContent = filtered.length;
+  $('#result-total').textContent = PROFESSIONALS.length;
+
+  // Filter display
+  const tags = [];
+  if (state.area) tags.push(`área: ${AREA_MAP[state.area]}`);
+  if (state.uf) tags.push(`uf: ${state.uf}`);
+  if (state.search) tags.push(`busca: "${state.search}"`);
+  $('#filter-display').textContent = tags.length ? `→ ${tags.join(' · ')}` : '';
+}
+
+function updateStats() {
+  $('#stat-total').textContent = PROFESSIONALS.length;
+  const areas = new Set(PROFESSIONALS.map(p => p.a));
+  const states = new Set(PROFESSIONALS.map(p => p.uf));
+  $('#stat-areas').textContent = areas.size;
+  $('#stat-states').textContent = states.size;
+}
+
+function populateFilters() {
+  const areaSelect = $('#filter-area');
+  const stateSelect = $('#filter-state');
+
+  // Áreas: ordem alfabética
+  const usedAreas = [...new Set(PROFESSIONALS.map(p => p.a))]
+    .sort((a, b) => AREA_MAP[a].localeCompare(AREA_MAP[b]));
+
+  usedAreas.forEach(key => {
+    const opt = document.createElement('option');
+    opt.value = key;
+    opt.textContent = AREA_MAP[key];
+    areaSelect.appendChild(opt);
+  });
+
+  // Estados: ordem alfabética
+  const usedStates = [...new Set(PROFESSIONALS.map(p => p.uf))].sort();
+  usedStates.forEach(uf => {
+    const opt = document.createElement('option');
+    opt.value = uf;
+    opt.textContent = uf;
+    stateSelect.appendChild(opt);
+  });
+}
+
+// ═══════════════════════════════════════════════════════════════
+// MODAL
+// ═══════════════════════════════════════════════════════════════
+
+function openModal(p) {
+  const contact = parseContact(p.c, p.n);
+  const portfolio = parsePortfolio(p.p);
+  const originalIdx = PROFESSIONALS.indexOf(p);
+
+  const html = `
+    <div class="modal-id">// ${padId(originalIdx)} · perfil completo</div>
+    <h2 class="modal-name">${escapeHtml(p.n)}</h2>
+    <div class="modal-meta">
+      <span class="modal-chip area">${AREA_MAP[p.a] || p.a}</span>
+      <span class="modal-chip uf">◉ ${p.uf}</span>
+    </div>
+    <div class="modal-section">
+      <div class="modal-section-label">especialidade</div>
+      <div class="modal-specialty">${escapeHtml(p.e)}</div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-section-label">sobre · venda seu peixe</div>
+      <div class="modal-bio">${escapeHtml(p.b)}</div>
+    </div>
+    <div class="modal-actions">
+      ${contact.url
+        ? `<a class="btn-contact" href="${contact.url}" target="_blank" rel="noopener">
+             <span><span class="icon">${contact.icon}</span> ${escapeHtml(contact.label)} via ${contact.channel}</span>
+             <span class="arrow">→</span>
+           </a>`
+        : `<div class="btn-portfolio" style="cursor:default;">contato: ${escapeHtml(contact.raw || '—')}</div>`
+      }
+      ${portfolio
+        ? `<a class="btn-portfolio" href="${portfolio.url}" target="_blank" rel="noopener">↗ portfólio: ${escapeHtml(portfolio.label)}</a>`
+        : ''
+      }
+    </div>
+  `;
+
+  $('#modal-content').innerHTML = html;
+  $('#modal-backdrop').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  $('#modal-backdrop').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// ═══════════════════════════════════════════════════════════════
+// STARS CANVAS
+// ═══════════════════════════════════════════════════════════════
+
+function initStars() {
+  const canvas = $('#stars');
+  const ctx = canvas.getContext('2d');
+  let stars = [];
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = Math.max(window.innerHeight, document.body.scrollHeight);
+    stars = [];
+    const count = Math.floor((canvas.width * canvas.height) / 8000);
+    for (let i = 0; i < count; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 1.2 + 0.2,
+        a: Math.random() * 0.6 + 0.2,
+        twinkle: Math.random() * 0.02,
+        twinkleDir: Math.random() > 0.5 ? 1 : -1,
+        hue: Math.random() > 0.85 ? 'yellow' : 'white'
+      });
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    stars.forEach(s => {
+      s.a += s.twinkle * s.twinkleDir;
+      if (s.a > 0.9 || s.a < 0.15) s.twinkleDir *= -1;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      const color = s.hue === 'yellow'
+        ? `rgba(255, 230, 0, ${s.a * 0.8})`
+        : `rgba(220, 200, 255, ${s.a})`;
+      ctx.fillStyle = color;
+      ctx.fill();
+
+      // glow for larger stars
+      if (s.r > 1) {
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r * 3, 0, Math.PI * 2);
+        ctx.fillStyle = s.hue === 'yellow'
+          ? `rgba(255, 230, 0, ${s.a * 0.05})`
+          : `rgba(176, 38, 255, ${s.a * 0.1})`;
+        ctx.fill();
+      }
+    });
+    requestAnimationFrame(draw);
+  }
+
+  resize();
+  window.addEventListener('resize', resize);
+  setTimeout(resize, 100); // re-measure after content load
+  draw();
+}
+
+// ═══════════════════════════════════════════════════════════════
+// EVENTS
+// ═══════════════════════════════════════════════════════════════
+
+function bind() {
+  $('#search').addEventListener('input', (e) => {
+    state.search = e.target.value;
+    render();
+  });
+
+  $('#filter-area').addEventListener('change', (e) => {
+    state.area = e.target.value;
+    render();
+  });
+
+  $('#filter-state').addEventListener('change', (e) => {
+    state.uf = e.target.value;
+    render();
+  });
+
+  $('#clear-filters').addEventListener('click', () => {
+    state = { search: '', area: '', uf: '' };
+    $('#search').value = '';
+    $('#filter-area').value = '';
+    $('#filter-state').value = '';
+    render();
+  });
+
+  $('#modal-close').addEventListener('click', closeModal);
+  $('#modal-backdrop').addEventListener('click', (e) => {
+    if (e.target.id === 'modal-backdrop') closeModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+}
+
+// ═══════════════════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════════════════
+
+populateFilters();
+updateStats();
+render();
+bind();
+initStars();
+</script>
+</body>
+</html>
